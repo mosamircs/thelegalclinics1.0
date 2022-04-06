@@ -116,7 +116,7 @@ function showLayer(curr){
 function changeLayer(curr){
     // console.log(curr);
     //hold for validation
-    // if (curr == 1 && !validateForm()) return false;
+    if (curr == 1 && !validateForm()) return false;
     layer[currLayer].style.display = "none";
     currLayer = currLayer + curr;
     // console.log(currLayer);
