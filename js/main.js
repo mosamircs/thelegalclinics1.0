@@ -816,19 +816,19 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
               <label class="form-check-label" for="flexCheckDefault1">
               صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
               </label>
-              <input class="form-check-input" type="checkbox" value="" name = "perm1[]">
+              <input class="form-check-input" type="checkbox" value="1" name = "perm1[]">
                 </div>
                 <div class="form-check">
                 <label class="form-check-label" for="flexCheckChecked2">
                 صلاحية توقيع العقود بالنيابه عن الشركة
                 </label>
-                <input class="form-check-input" type="checkbox" value="" name = "perm2[]">
+                <input class="form-check-input" type="checkbox" value="1" name = "perm2[]">
                 </div>
                 <div class="form-check">
                 <label class="form-check-label" for="flexCheckChecked3">
                 صلاحية التعامل امام الجهات الحكوميه بالنيابه عن الشركة
                 </label>
-                <input class="form-check-input" type="checkbox" value="" name = "perm3[]">
+                <input class="form-check-input" type="checkbox" value="1" name = "perm3[]">
                 </div>
           </div>
           <div class="card-footer align-self-center" style="display:none;">
@@ -901,19 +901,19 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
     <label class="form-check-label" for="flexCheckDefault1">
     صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
     </label>
-    <input class="form-check-input" type="checkbox" >
+    <input class="form-check-input" type="checkbox" value="1" name = "perm1[]">
       </div>
       <div class="form-check">
       <label class="form-check-label" for="flexCheckChecked2">
       صلاحية توقيع العقود بالنيابه عن الشركة
       </label>
-      <input class="form-check-input" type="checkbox" >
+      <input class="form-check-input" type="checkbox" value="1" name = "perm2[]">
       </div>
       <div class="form-check">
       <label class="form-check-label" for="flexCheckChecked3">
       صلاحية التعامل امام الجهات الحكوميه بالنيابه عن الشركة
       </label>
-      <input class="form-check-input" type="checkbox" >
+      <input class="form-check-input" type="checkbox" value="1" name = "perm3[]">
       </div>
     </div>
     <div class="card-footer align-self-center" style="display:none;">

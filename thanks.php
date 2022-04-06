@@ -14,17 +14,17 @@
     }
    if (isset($_POST['company_type'])) {
     $company_radio = $_POST['company_type'];
-    if ($company_radio == 'option1') {
+    if ($company_radio == 'LimitedLiabilityCompany') {
         $formdata["company_type"] = "شركة ذات مسئولية محدودة";
-    } elseif ($company_radio == 'option2') {
+    } elseif ($company_radio == 'JointStockIncorporation') {
         $formdata["company_type"]  = "شركة مساهمة مصري";
-    } elseif ($company_radio == 'option3') {
+    } elseif ($company_radio == 'OPCrequirements') {
         $formdata["company_type"]  = "شركة شخص واحد ذات مسئولية محدودة";
-    } elseif ($company_radio == 'option4') {
+    } elseif ($company_radio == 'SoleEntity') {
         $formdata["company_type"]  = "المنشاة الفردية";
-    } elseif ($company_radio == 'option5') {
+    } elseif ($company_radio == 'Generalpartnership') {
         $formdata["company_type"]  = "شركة التضامن";
-    } elseif ($company_radio == 'option6') {
+    } elseif ($company_radio == 'LimitedPartnership') {
         $formdata["company_type"]  = "شركة التوصية البسيطة";
     }
     }
