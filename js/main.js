@@ -120,13 +120,12 @@ function changeLayer(curr){
     layer[currLayer].style.display = "none";
     currLayer = currLayer + curr;
     // console.log(currLayer);
-        if (currLayer >= layer.length) {
+        if (currLayer >= layer.length-1) {
             form.submit();
             return false;
         }
     showLayer(currLayer);
     if(currLayer == 4){
-
         getFormData();
     }
     // console.log('fhjf');
