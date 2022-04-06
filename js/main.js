@@ -120,7 +120,7 @@ function changeLayer(curr){
     layer[currLayer].style.display = "none";
     currLayer = currLayer + curr;
     // console.log(currLayer);
-        if (currLayer >= layer.length-1) {
+        if (currLayer >= (layer.length-1)) {
             form.submit();
             return false;
         }
@@ -880,7 +880,7 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
             <div class="form-group">
             <div class="form-line">
                 <div class="btn-file align-items-center">
-                <input type="file" id="event_image" accept="image/png, image/gif, image/jpeg" name="source" value="" onchange="onFileSelected(event,${i})" data-id="input_${x}">
+                <input type="file" id="event_image" accept="image/png, image/gif, image/jpeg" name="source" name = "personal_id[]" value="" onchange="onFileSelected(event,${i})" data-id="input_${x}">
                     <div class=" change-file-ico">
                        <img src="images/upload.svg" width="25%" class="disNone">
                        </div>

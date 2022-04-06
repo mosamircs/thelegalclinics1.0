@@ -73,6 +73,9 @@
     }
     if (isset($_POST["shareholder_percentage"])) {
     for ($i=0; $i <count($_POST["shareholder_percentage"]) ; $i++) {
+        if (empty($_POST["shareholder_percentage"][$i])){
+            $formdata["shareholder_percentage"][$i] = 100;
+        }
         $formdata["shareholder_percentage"][$i] = $_POST["shareholder_percentage"][$i];
      }
     }
