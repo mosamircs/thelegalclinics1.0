@@ -116,7 +116,7 @@ function showLayer(curr){
 function changeLayer(curr){
     // console.log(curr);
     //hold for validation
-    if (curr == 1 && !validateForm()) return false;
+    // if (curr == 1 && !validateForm()) return false;
     layer[currLayer].style.display = "none";
     currLayer = currLayer + curr;
     // console.log(currLayer);
@@ -554,7 +554,6 @@ function EnableOpt1(){
 }
 ///////////////////////////////comp-info---section-2/////////////////////////////////
 const btnAdd = document.querySelector('#btn-add-sug');
-
         const parentForm = document.querySelector('#parent-el');
         // console.log(parentDiv)
         btnAdd.addEventListener('click',(e)=>{
@@ -739,7 +738,6 @@ function getFormData(){
         preview.src = reader.result;
       })
     }
-  
     if (file) {
       reader.readAsDataURL(file);
     } else {
@@ -757,14 +755,20 @@ const btnAddMang = document.getElementById('btn-add-mang');
 const parentCard = document.getElementById('card-newAdd');
 let x = 0 , i = 0 , z = 0 , y = 0;
 
-let displayٍSelect ;
+let displayٍSelect , lname , lnation , h6Name;
 btnAddMang.addEventListener('click',(e)=>{
     e.preventDefault();
     if(checkbox2.checked){
         displayٍSelect = 'block';
+        lname = 'اسم المساهم'; 
+        lnation ='جنسيه المساهم'; 
+        h6Name ='صلاحيات المساهم';
     }
     else{
         displayٍSelect = 'none';
+        lname = 'اسم المدير'; 
+        lnation ='جنسيه المدير'; 
+        h6Name ='صلاحيات المدير';
     }
 if(parentCard.getElementsByTagName('div').length == 0 ){
     if(arrayNames.includes(autocompleteinput.value)){
@@ -793,13 +797,11 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
                   <div class="col-6">
                       <div class=" g-3 justify-content-around" dir="rtl">
                           <div class="">
-                            <label for="inputtext1" class="form-label mang">اسم المدير</label>
-                            <label for="inputtext1" class="form-label" style="display: none;">اسم المساهم</label>
+                            <label for="inputtext1" class="form-label mang">${lname}</label>
                             <input type="text" class="form-control" id="inputtext1" value="${e.name}" name = "manager_name[]" readonly>
                           </div>
                           <div class="">
-                              <label for="inputtext2" class="form-label mang">جنسيه المدير</label>
-                              <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
+                              <label for="inputtext2" class="form-label mang">${lnation}</label>
                               <input type="text" class="form-control" id="inputtext2" value="${e.nationality}" name = "manager_nationality[]" readonly>
                           </div>
                       </div>
@@ -810,7 +812,7 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
               </div>
           </div>
           <div class="card-body" id='card_${x}'>
-              <h6 class="h6part">صلاحيات المدير</h6>
+              <h6 class="h6part">${h6Name}</h6>
               <div class="form-check">
               <label class="form-check-label" for="flexCheckDefault1">
               صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
@@ -864,13 +866,11 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
         <div class="col-6">
             <div class=" g-3 justify-content-around" dir="rtl">
                 <div class="">
-                  <label for="input1" class="form-label mang">اسم المدير</label>
-                  <label for="input1" class="form-label" style="display: none;">اسم المساهم</label>
+                  <label for="input1" class="form-label mang">${lname}</label>
                   <input type="text" class="form-control" id="input1" value="${autocompleteinput.value}"  name = "manager_name[]" data-id="input_${x}">
                 </div>
                 <div class="">
-                    <label for="inputtext2" class="form-label mang">جنسيه المدير</label>
-                    <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
+                    <label for="inputtext2" class="form-label mang">${lnation}</label>
                     <input type="text" class="form-control" id="inputtext2" name = "manager_nationality[]" data-id="input_${x}">
                 </div>
             </div>
@@ -897,7 +897,7 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
     </div>
     </div>
     <div class="card-body" id='card_${x}'>
-    <h6 class="h6part">صلاحيات المدير</h6>
+    <h6 class="h6part">${h6Name}</h6>
     <div class="form-check">
     <label class="form-check-label" for="flexCheckDefault1">
     صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
@@ -949,13 +949,11 @@ else{
         <div class="col-6">
             <div class=" g-3 justify-content-around" dir="rtl">
                 <div class="">
-                  <label for="inputtext1" class="form-label mang">اسم المدير</label>
-                  <label for="inputtext1" class="form-label" style="display: none;">اسم المساهم</label>
+                  <label for="inputtext1" class="form-label mang">${lname}</label>
                   <input type="text" class="form-control" id="inputtext1" value="${autocompleteinput.value}"  name = "manager_name[]" data-id="input_${y}">
                 </div>
                 <div class="">
-                    <label for="inputtext2" class="form-label mang">جنسيه المدير</label>
-                    <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
+                    <label for="inputtext2" class="form-label mang">${lnation}</label>
                     <input type="text" class="form-control" id="inputtext2"   name = "manager_nationality[]" data-id="input_${y}">
                 </div>
             </div>
@@ -981,7 +979,7 @@ else{
     </div>
     </div>
     <div class="card-body" id='card_${x}'>
-    <h6 class="h6part">صلاحيات المدير</h6>
+    <h6 class="h6part">${h6Name}</h6>
     <div class="form-check">
     <label class="form-check-label" for="flexCheckDefault1">
     صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
@@ -1044,13 +1042,11 @@ else{
                   <div class="col-6">
                       <div class=" g-3 justify-content-around" dir="rtl">
                           <div class="">
-                            <label for="inputtext1" class="form-label mang">اسم المدير</label>
-                            <label for="inputtext1" class="form-label" style="display: none;">اسم المساهم</label>
+                            <label for="inputtext1" class="form-label mang">${lname}</label>
                             <input type="text" class="form-control" id="inputtext1" value="${e.name}" name = "manager_name[]" readonly>
                           </div>
                           <div class="">
-                              <label for="inputtext2" class="form-label mang">جنسيه المدير</label>
-                              <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
+                              <label for="inputtext2" class="form-label mang">${lnation}</label>
                               <input type="text" class="form-control" id="inputtext2" value="${e.nationality}" name = "manager_nationality[]" readonly>
                           </div>
                       </div>
@@ -1061,7 +1057,7 @@ else{
               </div>
           </div>
           <div class="card-body" id='card_${x}'>
-              <h6 class="h6part">صلاحيات المدير</h6>
+              <h6 class="h6part">${h6Name}</h6>
               <div class="form-check">
               <label class="form-check-label" for="flexCheckDefault1">
               صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
@@ -1115,13 +1111,11 @@ else{
         <div class="col-6">
             <div class=" g-3 justify-content-around" dir="rtl">
                 <div class="">
-                  <label for="input1" class="form-label mang">اسم المدير</label>
-                  <label for="input1" class="form-label" style="display: none;">اسم المساهم</label>
+                  <label for="input1" class="form-label mang">${lname}</label>
                   <input type="text" class="form-control" id="input1" value="${autocompleteinput.value}"  name = "manager_name[]" data-id="input_${x}">
                 </div>
                 <div class="">
-                    <label for="inputtext2" class="form-label mang">جنسيه المدير</label>
-                    <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
+                    <label for="inputtext2" class="form-label mang">${lnation}</label>
                     <input type="text" class="form-control" id="inputtext2" name = "manager_nationality[]" data-id="input_${x}">
                 </div>
             </div>
@@ -1148,7 +1142,7 @@ else{
     </div>
     </div>
     <div class="card-body" id='card_${x}'>
-    <h6 class="h6part">صلاحيات المدير</h6>
+    <h6 class="h6part">${h6Name}</h6>
     <div class="form-check">
     <label class="form-check-label" for="flexCheckDefault1">
     صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
@@ -1200,13 +1194,11 @@ else{
         <div class="col-6">
             <div class=" g-3 justify-content-around" dir="rtl">
                 <div class="">
-                  <label for="inputtext1" class="form-label mang">اسم المدير</label>
-                  <label for="inputtext1" class="form-label" style="display: none;">اسم المساهم</label>
+                  <label for="inputtext1" class="form-label mang">${lname}</label>
                   <input type="text" class="form-control" id="inputtext1" value="${autocompleteinput.value}"  name = "manager_name[]" data-id="input_${y}">
                 </div>
                 <div class="">
-                    <label for="inputtext2" class="form-label mang">جنسيه المدير</label>
-                    <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
+                    <label for="inputtext2" class="form-label mang">${lnation}</label>
                     <input type="text" class="form-control" id="inputtext2"   name = "manager_nationality[]" data-id="input_${y}">
                 </div>
             </div>
@@ -1232,7 +1224,7 @@ else{
     </div>
     </div>
     <div class="card-body" id='card_${x}'>
-    <h6 class="h6part">صلاحيات المدير</h6>
+    <h6 class="h6part">${h6Name}</h6>
     <div class="form-check">
     <label class="form-check-label" for="flexCheckDefault1">
     صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة

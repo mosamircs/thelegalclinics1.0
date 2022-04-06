@@ -342,8 +342,8 @@
                         <div class="layer">
                             <div class="d-flex justify-content-center">
                                 <div class="down-paper mt-5 text-center">
-                                    <button  onclick = "download_docx('incorporation-poa-amended.docx');" type  ="button"class="btn btn-down-paper"><img src="images/Vector (1).svg" >الحصول علي التوكيل الرسمي</button>
-                                        <h6 class="pt-3 sec">برجاء تحديد موعد لتوقيع التوكيل</h6>
+                                    <button  onclick = "download_docx('incorporation-poa-amended.docx');" type  ="button"class="btn btn-down-paper"><img src="images/Vector (1).svg" >برجاء تحميل التوكيل وملا البيانات</button>
+                                        <h6 class="pt-3 sec">برجاء تحديد موعدالشهر العقاري لتوقيع التوكيل</h6>
                                         <div>
                                         <input type="text" class="form-control mx-auto mb-3" id="result" placeholder="Select date" name= "signdate" disabled required>
                                             <div class="row">
