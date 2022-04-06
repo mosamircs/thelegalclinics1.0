@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <section>
+        <section >
          <form action="thanks.php" id="form" method="POST" class="needs-validation" enctype = "multipart/form-data" novalidate>
          <input type="hidden" name="userid" id="userid" value="">
                 <div class="main-content" id="main" >
@@ -140,7 +140,7 @@
                                 <div class="choice d-flex justify-content-center flex-column align-items-end">
                                     <div class="form-check d-flex flex-row-reverse mt-3">
                                         <div>
-                                            <input class="form-check-input" type="radio"  name="company_type"  id="exampleRadios1" value="option1" onclick="check1()"  required></div>
+                                            <input class="form-check-input" type="radio"  name="company_type"  id="exampleRadios1" value="LimitedLiabilityCompany" onclick="checkboxSelection()"  required></div>
                                         <div class="mr-3">
                                             <label class="form-check-label" for="exampleRadios1">
                                                 <h2>شركة ذات مسئولية محدودة</h2>
@@ -153,7 +153,7 @@
                                         <div class="mr-8"><button class="btn down" id="down-1" type="button" onclick="download('Incorporation of a Limited Liability Company - Legal Clinic');" style="display: none;">تنزيل ملف الشروط</button></div> 
                                     </div>
                                       <div class="form-check d-flex flex-row-reverse mt-3">
-                                        <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios2" value="option2" onclick="check2()" required></div>
+                                        <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios2" value="JointStockIncorporation" onclick="checkboxSelection()" required></div>
                                         <div class="mr-3">
                                             <label class="form-check-label" for="exampleRadios1">
                                                 <h2>شركة مساهمة مصري</h2>
@@ -166,7 +166,7 @@
                                         <div class="mr-8"><button class="btn down"  id="down-2" style="display: none;" onclick="download('Joint Stock Incorporation');"  type="button">تنزيل ملف الشروط</button></div>
                                     </div>
                                       <div class="form-check d-flex flex-row-reverse mt-3">
-                                        <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios3" value="option3" onclick="check3()" required></div>
+                                        <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios3" value="OPCrequirements" onclick="checkboxSelection()" required></div>
                                         <div class="mr-3">
                                             <label class="form-check-label" for="exampleRadios1">
                                                 <h2>شركة شخص واحد ذات مسئولية محدودة</h2>
@@ -189,7 +189,7 @@
                                     </div>
                                     <div class="choice d-flex justify-content-center flex-column align-items-end">
                                         <div class="form-check d-flex flex-row-reverse mt-3">
-                                            <div><input class="form-check-input" type="radio" name="company_type" id="exampleRadios4" value="option4" onclick="check4()"  required></div>
+                                            <div><input class="form-check-input" type="radio" name="company_type" id="exampleRadios4" value="SoleEntity" onclick="checkboxSelection()"  required></div>
                                             <div class="mr-3">
                                                 <label class="form-check-label" for="exampleRadios4">
                                                     <h2>المنشاة الفردية</h2>
@@ -199,7 +199,7 @@
                                             <div class="mr-8"><button class="btn down" id="down-4" type="button" onclick="download('Sole Entity');" style="display: none;">تنزيل ملف الشروط</button></div> 
                                         </div>
                                           <div class="form-check d-flex flex-row-reverse mt-3">
-                                            <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios5" value="option5" onclick="check5()" required></div>
+                                            <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios5" value="Generalpartnership" onclick="checkboxSelection()" required></div>
                                             <div class="mr-3">
                                                 <label class="form-check-label" for="exampleRadios1">
                                                     <h2>شركة التضامن</h2>
@@ -209,7 +209,7 @@
                                             <div class="mr-8"><button class="btn down"  id="down-5" style="display: none;" onclick="download('General partnership');"  type="button">تنزيل ملف الشروط</button></div>
                                         </div>
                                           <div class="form-check d-flex flex-row-reverse mt-3">
-                                            <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios6" value="option6" onclick="check6()" required></div>
+                                            <div><input class="form-check-input" type="radio"  name="company_type" id="exampleRadios6" value="LimitedPartnership" onclick="checkboxSelection()" required></div>
                                             <div class="mr-3">
                                                 <label class="form-check-label" for="exampleRadios1">
                                                     <h2>شركة التوصية البسيطة</h2>
@@ -262,11 +262,12 @@
                                         <div class="col-md-4">
                                           <label for="inputtext3" class="form-label">قيمه رأس المال</label>
                                           <input type="text" class="form-control lay2" id="inputtext3"  name="capital_value"></input>
+                                          <div id="soloComp"><span >راس المال يجب الا يقل عن 50 الف جنيها</span></div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="inputtext4" class="form-label" style="display: none;">قيمه السهم</label>   <!--لو شركة مساهمة display=inline-block-->
-                                            <label for="inputtext4" class="form-label mang">قيمه الحصه</label>
-                                            <input type="text" class="form-control lay2" id="inputtext4" name="capital_share" ></input>
+                                            <!-- <label for="inputtext4" class="form-label" style="display: none;">قيمه السهم</label> -->
+                                            <label for="inputtext4" class="form-label" id="valueCor">قيمه الحصه</label>
+                                            <input type="text" class="form-control lay2" id="inputtext4" name="capital_share"></input>
                                         </div>
                                     </div>
                                 </div>
@@ -278,39 +279,43 @@
                                 <div class="col-sm-3" dir="rtl">
                                     <label class="visually-hidden" for="specificSizeSelect">Preference</label>
                                     <select class="form-select" id="specificSizeSelect">
-                                        <option selected disabled class="OPT-padding">اختر عدد المديرين</option>
-                                        <option  disabled id="partCompOption" class="OPT-padding">اختر عدد المساهمين</option>
+                                        <option  disabled selected class="OPT-padding" id="allCompOption">اختر عدد المديرين</option>
+                                        <!-- <option  disabled id="partCompOption" class="OPT-padding">اختر عدد المساهمين</option> -->
                                     </select>
-                                    <!-- <div class="invalid-feedback">يجب اختيار عدد المديرين</div> -->
+                                   <div class="oneComp">
+                                   <div style="text-align: center ;background-color: var(--main-color);
+                                    color: var(--bg-main-color);height: 50px;border-radius: 18px;display: flex;" > 
+                                    <p style="margin: auto;padding-right: 1rem;padding-left: 1rem;font-weight 400;">بيانات المالك</p>
+                                    </div>
                                   </div>
+                                   </div>
                             </div>
-                            <!-- <div class="row g-3 justify-content-around pt-3 mangData" dir="rtl" data-id="item_0">
-                                <div class="col-md-3">
-                                  <label for="inputtext1" class="form-label" style="display: none;">اسم المساهم</label>  
-                                  <label for="inputtext1" class="form-label mang" id="mangName">اسم المدير</label>
+                            <div class="oneComp">
+                            <div class="row g-3 justify-content-between pt-3 mangData" dir="rtl" data-id="item_0">
+                                <div class="col-md-4">
+                                  <label for="inputtext1" class="form-label mang" id="mangName">اسم المالك</label>
                                   <input type="text" class="form-control lay3 mangInfo" id="name" name="shareholder_name[]" >
                                 </div>
-                                <div class="col-md-3">
-                                    <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
-                                  <label for="inputtext1" class="form-label mang">جنسيه المدير</label>
+                                <div class="col-md-4">
+                                  <label for="inputtext1" class="form-label mang">جنسيه المالك</label>
                                     <input type="text" class="form-control lay3 mangInfo" id="nation" name="shareholder_nationality[]">
                                 </div>
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <label for="inputtext6" class="form-label" style="display: none;">نسبه المساهمه</label>
-                                  <label for="inputtext1" class="form-label mang">نسبه المدير</label>
-                                    <input type="text" class="form-control lay3" id="inputtext6" name="shareholder_percentage[]" >
-                                </div>
-                                    <div class="col-md-5 mb-3">
+                                  <label for="inputtext1" class="form-label mang">نسبه المالك</label>
+                                    <input type="text" class="form-control lay3" id="inputtext6" name="shareholder_percentage[]" disabled>
+                                </div> -->
+                                    <div class="col-md-6 mb-3">
                                         <label for="formFileMultiple" class="form-label">اضافه البطاقه الشخصية</label>
                                         <input class="form-control lay3 mangInfo" name="personal_id[]" type="file" id="id" accept="image/png, image/gif, image/jpeg">
                                       </div>
-                                    <div class="col-md-3 x-last align-self-center">
-                                        <button class="btn btn-outline-danger" type="reset" style="display: none;" >حذف المساهم</button> 
-                                        <button class="btn btn-outline-danger" type="reset" id="partCompDel">حذف المدير</button>
+                                    <div class="col-md-4 x-last align-self-center">
+                                        <button class="btn btn-outline-danger" type="reset" id="partCompDel">حذف المالك</button>
                                     </div>
                                     <hr>
-                            </div> -->
-                            <div  id="part-form">
+                            </div>
+                            </div>
+                            <div  id="part-form" class="container">
                             </div>
                         </div>
                         <!-- layer---4 mangers names -->
@@ -318,8 +323,8 @@
                             <div class="mang-names pt-4">
                                 <div class="row g-3 justify-content-center" dir="rtl">
                                     <div class="col-md-6">
-                                      <label for="inputtextAdd" class="form-label mang" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" >ادخل اسماء المديرين</label>
-                                      <label for="inputtextAdd" class="form-label" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" style="display: none;">ادخل اسماءالمساهمين</label>
+                                      <label for="inputtextAdd" class="form-label" id="partName">ادخل اسماء المديرين</label>
+                                      <!-- <label for="inputtextAdd" class="form-label" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" style="display: none;">ادخل اسماء المساهمين</label> -->
                                       <input type="text" class="form-control" id="autocompleteinput" autocomplete="additional-name">
                                     </div>
                                     <div class="col-3 " style="text-align: center;padding-top: 2.1rem;">
@@ -329,27 +334,7 @@
                             </div>
                             <div class="mang-details pt-4 pb-4" dir="rtl" >
                                 <div class="row" id="card-newAdd">
-                                     <!-- Modal HTML -->
-                                     <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" dir="rtl">
-                                        <div class="modal-dialog">
-                                          <div class="modal-content">
-                                            <div class="modal-header" style="border-bottom: 0;">
-                                              <h5 class="modal-title" id="exampleModalLabel">حذف المدير</h5>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin:0;"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                              هل انت متاكد من انك تريد حذف العضو؟؟
-                                            </div>
-                                            <div class="modal-footer" style="flex-wrap: nowrap; justify-content: space-evenly;border-top: 0;">
-                                              <button type="button" class="btn no" data-bs-dismiss="modal" 
-                                              style="color: #000086; border:1px solid #000086;">لا</button>
-                                              <button type="button" class="btn yes" id="close-modal"
-                                              style="width: auto; color: #FF0000;border:1px solid #FF0000;" >نعم</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div> -->
-                                    <!--modal end-->
+    
                                 </div>
                             </div>
                         </div>
@@ -382,14 +367,34 @@
                 </div>
             </form>
         </section>
+        <!--thanks msg-->
+        <section class="layer justify-content-center align-items-center" style="height: -webkit-fill-available;">
+        <div class=" ">
+	  <div class="">
+		<div class="">
+			<div class="thanks-wrap">
+				<div class="checkmark">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 161.2 161.2">
+						<circle class="path" fill="none" stroke="#000086" stroke-width="4" stroke-miterlimit="10" cx="80.6" cy="80.6" r="62.1"/>
+						<path class="path" fill="none" stroke="#000086" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" d="M113 52.8l-38.9 55.6-25.9-22"/>
+						<circle class="spin" fill="none" stroke="#555555" stroke-width="4" stroke-miterlimit="10" stroke-dasharray="12.2175,12.2175" cx="80.6" cy="80.6" r="73.9"/>
+					</svg>
+				</div>
+				<h2 class="pt-5">تم التسجيل بنجاح</h2>
+			</div>
+			<!-- <a href="">Вернуться на сайт</a> -->
+		</div>
+	</div>
+</div>
+</section>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/js/intlTelInput.min.js" integrity="sha512-Po9nSdYOcWIcoADdRjkAbRYPpR8OHjxzA/3RDUERZcDewTLzRTxbG4bUX7Sr7lVEcO3wTCzphdOBWgNFKVmxaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/rome.js"></script>
 
-    <script src="js/main.js"></script>  
+    <script src="js/main.js?t=<?php echo time();?>"></script>  
     <script>
         //download files.pdf
          function download(filename) {

@@ -592,6 +592,26 @@ input.invalid{
     position: relative;
     top: -1rem;
 }
+.oneComp{
+    display: none;
+}
+#soloComp{
+    font-size: .8rem;
+    font-weight: 100;
+    color: #a5a5a5;
+    display: none;
+}
+/* .count p .ownerData{
+    text-align: center ;
+    background-color: var(--main-color);
+    color: var(--bg-main-color);
+    height: 50px;
+    border-radius: 18px;
+} */
+.btn-outline-danger{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
 .count select{
     background-color: var(--main-color);
     color: var(--bg-color);
@@ -1030,9 +1050,7 @@ textarea.form-control.is-invalid {
 .form-check-input.is-valid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label {
     color: var(--main-color);
 }
-.selectMang{
-    display: none;
-}
+
 /* Drop Zoon */
 .upload-area__drop-zoon {
     /* position: relative; */
@@ -1160,3 +1178,84 @@ textarea.form-control.is-invalid {
         .displayBlock{
             display: block !important;
         }
+/*thanks loader */
+.thanks-wrap {
+    background: #FFFFFF;
+    padding: 30px;
+    margin: 0 auto 10px;
+    /* display: none; */
+    max-width: 320px;
+  }
+  
+  .thanks-wrap  .checkmark {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .thanks-wrap  .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    -webkit-animation: dash 2s ease-in-out;
+            animation: dash 2s ease-in-out;
+  }
+  
+  .thanks-wrap  .spin {
+    -webkit-animation: spin 2s;
+            animation: spin 2s;
+    transform-origin: 50% 50%;
+  }
+  
+  .thanks-wrap  h2 {
+    -webkit-animation: text 1s;
+            animation: text 1s;
+  }
+  
+  @-webkit-keyframes dash {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @-webkit-keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes text {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes text {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

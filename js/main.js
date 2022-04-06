@@ -1,5 +1,5 @@
 /*
-////// dont mess with this file /////////////
+////// i messed with this file :( /////////////
 */
 //////////////////////main variables//////////////////////////////////
 const form = document.getElementById('form');
@@ -13,6 +13,16 @@ const proBar = document.getElementById('pro-bar');
 const layer = document.getElementsByClassName('layer');
 const progress = document.getElementById('progress');
 const circles = document.querySelectorAll('.circle');
+
+const partCompDel = document.getElementById('partCompDel');
+const allCompOption = document.getElementById('allCompOption');
+const partName = document.getElementById('partName');
+const mangPart = document.getElementsByClassName('mangPart');
+const mangBlock = document.getElementsByClassName('mangBlock');
+const h6part = document.getElementsByClassName('h6part');
+const partComp = document.getElementsByTagName('label');
+const mangers = document.getElementsByClassName('mang');
+// const selectMang = document.getElementsByClassName('selectMang');
 
 ///////// show layers 
 let currLayer = 0;
@@ -28,17 +38,83 @@ function showLayer(curr){
         divButChose.style.display = 'block';
         proBar.style.display = 'block';
     }
-    if (curr == (layer.length - 1)) {
+    
+    if(curr == 2 && checkbox2.checked){
+        document.getElementById('valueCor').innerHTML = 'قيمه السهم';
+        // console.log('jjf')
+    }else{
+        document.getElementById('valueCor').innerHTML = 'قيمه الحصه';
+    }
+
+    if(curr == 2 && checkbox3.checked){
+        document.getElementById('soloComp').style.display = 'block';
+        // console.log('jjf')
+    }else{
+        document.getElementById('soloComp').style.display = 'none';
+        
+    }
+
+    if(curr == 3 && checkbox2.checked){
+        allCompOption.innerHTML = 'اختر عدد المساهمين'         
+        disOpt1();
+            document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
+                if (opt.value == "2") {
+                     opt.disabled = true;
+                }
+            });
+                
+    } else{
+        allCompOption.innerHTML = 'اختر عدد المديرين'
+        EnableOpt1();
+        document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
+            if (opt.value == "2") {
+                opt.disabled = false;
+            }
+        });
+       
+    }
+    if((curr == 3 && checkbox5.checked) || (curr == 3 && checkbox6.checked) || (curr == 3 && checkbox1.checked)){
+        disOpt1();
+    }else{
+        EnableOpt1();
+    }
+
+    if((curr == 3 && checkbox3.checked) || (curr == 3 && checkbox4.checked) ){
+        oneComp();
+        document.getElementById('soloComp').style.display = 'block';
+    }else{
+        document.getElementById('specificSizeSelect').style.display = 'block';
+        [...$('.oneComp')].forEach(e =>{
+        e.style.display='none';
+       });
+       document.getElementById('soloComp').style.display = 'none';
+    }
+
+    if(curr == 4 && checkbox2.checked){
+        partName.innerHTML = 'ادخل اسماء المساهمين';
+            
+    }else{
+        partName.innerHTML = 'ادخل اسماء المديرين';
+           
+    }
+    if (curr == (layer.length - 2)) {
         document.getElementById("next-1").innerHTML = "حفظ";
       } else {
         document.getElementById("next-1").innerHTML = "التالى";
       }
+    if (curr == (layer.length - 1)){
+    layer[curr].style.display = 'flex';
+
+        divButChose.style.display = 'none';
+        proBar.style.display = 'none';
+    }  
     //update progress bar 
     update();
 }
+// console.log('hi djks')
 //////// change layers
 function changeLayer(curr){
-    // console.log(layer);
+    // console.log(curr);
     //hold for validation
     if (curr == 1 && !validateForm()) return false;
     layer[currLayer].style.display = "none";
@@ -48,7 +124,6 @@ function changeLayer(curr){
             form.submit();
             return false;
         }
-    // }
     showLayer(currLayer);
     if(currLayer == 4){
 
@@ -90,16 +165,6 @@ function validateForm() {
                    errorUserName.innerHTML="";
                    userName.style.border = "1px solid green";
                    valid = true;
-   
-           // }else{
-           //     //user name
-           //         errorUserName.innerHTML="اسم المستخدم يجب الا يحتوى على رموز او ارقام";
-           //         errorUserName.style.display="block";
-           //         errorUserName.style.fontSize="14px";
-           //         errorUserName.style.color="red";
-           //         userName.style.border = "1px solid red";
-           //         valid = false;
-           //     }
            }
    
        //user email
@@ -200,7 +265,7 @@ if(currLayer == 2){
  }
  if(currLayer == 3){
    let passLay3 = [];
-    for(let i=0; i<inputTxt2.length; i++){
+    for(let i=0; i < inputTxt2.length; i++){
        // console.log(inputTxt[i])
          if(inputTxt2[i].value == ''){
              inputTxt2[i].style.border = '1px solid red';
@@ -218,9 +283,9 @@ if(currLayer == 2){
     if(value == false){
         valid = false;
     }
-    // } else{
-    //     valid = true;
-    // }
+    else{
+        valid = true;
+    }
 })
 }
 
@@ -310,23 +375,6 @@ function validateCard(){
         })
     }
    })
-        // for(let i=0; i<inputVal.length; i++){
-        //     if(inputVal[i]['type'] == ['checkbox']){
-        //         if(inputVal[i]['checked'] != true){
-        //             if($('.form-check-input:checked').length == 0)
-        //             {
-        //                 inputVal[i].style.border = '1px solid red';
-        //             // console.log(radioBtn[i])
-        //             passLay4.push(false);
-        //             }
-        //         } else {
-        //             inputVal[i].style.border = '1px solid #000086';
-        //             // valid = true;
-        //             passLay4.push(true);
-
-        //         }
-        //     }
-        // }
         passLay4.forEach((value)=>{
             if(value == false){
                validate = false;
@@ -379,6 +427,9 @@ function setInputFilter(textbox, inputFilter) {
      const input = document.querySelector("#phone");
         window.intlTelInput(input,({
       // options here
+      
+    // initialCountry:"egypt"
+
     }));
     $(document).ready(function() {
         $('.iti__flag-container').click(function() { 
@@ -430,114 +481,82 @@ let checkbox5 = document.getElementById('exampleRadios5');
 let downBtn5 = document.getElementById('down-5');
 let checkbox6 = document.getElementById('exampleRadios6');
 let downBtn6 = document.getElementById('down-6');
-const partCompDel = document.getElementById('partCompDel');
-const partCompOption = document.getElementById('partCompOption');
-const h6part = document.getElementsByClassName('h6part');
-const partComp = document.getElementsByTagName('label');
-const mangers = document.getElementsByClassName('mang');
-const selectMang = document.getElementsByClassName('selectMang');
 
-let changeOptin = false;
-function check1(){
+
+// let changeOptin = false;
+function checkboxSelection(){
+    // e.preventDefault();
+    //check 1
     if (checkbox1.checked){
         downBtn1.style.display = 'inline-block';
         downBtn2.style.display = 'none';
         downBtn3.style.display = 'none';
-        document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
-          if (opt.value == "1") {
-              opt.disabled = true;
-          }
-      });
+        // disOpt1();
     }
-    return changeOptin;
-}
-function check2(){
-    // e.preventDefault();
-    // console.log('before');
-    if (checkbox2.checked){
+    //check 2
+    else if (checkbox2.checked){
         // return true;
         downBtn1.style.display = 'none';
         downBtn2.style.display = 'inline-block';
         downBtn3.style.display = 'none';
-        // console.log('after');
-        for(let i=0; i < partComp.length; i++){
-            if(partComp[i].style.display == 'none'){
-                partComp[i].style.display = 'inline-block';
-                // partCompDel.innerHTML = 'حذف المساهم';
-                partCompOption.setAttribute('selected','selected');
-            }
-        }
-                // h6part.innerHTML = 'صلاحيات المساهم';
-                for(let j=0; j< mangers.length;j++){
-                    mangers[j].style.display = 'none';
-                    // console.log(mangers[j])
-                }
-                // for(let x=; x < selectMang.length;x++){
-                //     console.log(selectMang[x])
-                //     // selectMang[x].style.display = 'block';
-                // }
-                // [...selectMang].forEach(e=>{
-                //     // console.log(e.getAttribute('data-id'));
-                // })
-                for(let y=0; y< h6part.length;y++){
-                    // console.log(mangers[j])
-                    // h6part[y].innerHTML = 'صلاحيات المساهم';
-                }
-     }
-  document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
-        if (opt.value == "1") {
-            opt.disabled = true;
-        }
-      });
-  document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
-    if (opt.value == "2") {
-        opt.disabled = true;
     }
-  });
-}
-function check3(){
-    if (checkbox3.checked){
+    //check 3
+    else if (checkbox3.checked){
         downBtn1.style.display = 'none';
         downBtn2.style.display = 'none';
         downBtn3.style.display = 'inline-block';
+        // oneComp();
+        // document.getElementById('soloComp').style.display = 'block';
     }
-}
-function check4(){
-    if (checkbox4.checked){
+    //check 4
+    else if (checkbox4.checked){
         downBtn5.style.display = 'none';
         downBtn6.style.display = 'none';
         downBtn4.style.display = 'inline-block';
+        // oneComp();
     }
-}
-function check5(){
-    if (checkbox5.checked){
+    //check 5
+    else if (checkbox5.checked){
         downBtn4.style.display = 'none';
         downBtn6.style.display = 'none';
         downBtn5.style.display = 'inline-block';
-        document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
-          if (opt.value == "1") {
-              opt.disabled = true;
-          }
-        });
+        // disOpt1();
     }
-}function check6(){
-    if (checkbox6.checked){
+    //check 6
+    else if (checkbox6.checked){
         downBtn4.style.display = 'none';
         downBtn5.style.display = 'none';
         downBtn6.style.display = 'inline-block';
-        document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
-          if (opt.value == "1") {
-              opt.disabled = true;
-          }
-        });
+        // disOpt1();
     }
+
+}
+function oneComp(){
+    document.getElementById('specificSizeSelect').style.display = 'none';
+    [...$('.oneComp')].forEach(e =>{
+        e.style.display='block';
+    })
+}
+function disOpt1(){
+    document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
+        if (opt.value == "1") {
+            opt.disabled = true;
+            // console.log('fhfh')
+        }
+      });
+}
+function EnableOpt1(){
+    document.querySelectorAll("#specificSizeSelect option").forEach(opt => {
+        if (opt.value == "1") {
+            opt.disabled = false;
+        }
+      });
 }
 ///////////////////////////////comp-info---section-2/////////////////////////////////
 const btnAdd = document.querySelector('#btn-add-sug');
 
         const parentForm = document.querySelector('#parent-el');
         // console.log(parentDiv)
-        // let numArray = ['الثالث','الرابع','الخامس','السادس'];
         btnAdd.addEventListener('click',(e)=>{
             e.preventDefault();
             let i = parentForm.getElementsByTagName('div').length;
@@ -557,7 +576,6 @@ const btnAdd = document.querySelector('#btn-add-sug');
                                 <div class="col-md-4 align-self-end text-center" >
                                     <button class="btn btn-outline-danger" id="btn-delete-sug" type="button" onclick="deleted1()">حذف اقتراحات</button>
                                 </div>`;
-
                     parentForm.appendChild(newform);            
                     } else if(i < 9){
                     const newform = document.createElement('div');
@@ -606,9 +624,10 @@ const btnAdd = document.querySelector('#btn-add-sug');
             }
         
 ///////////////////////////part-info---section-3//////////////////////////////////////
-        const select = document.querySelector('#specificSizeSelect');
-        const parentCountEl = document.getElementById('part-form');
-        
+const select = document.querySelector('#specificSizeSelect');
+const parentCountEl = document.getElementById('part-form');
+let labelNameValue, labelNationValue, labelrangeValue, btnDelete;
+
           for(let i=1; i<= 50; i++){
             const newOption = document.createElement('option');
             const optionText = document.createTextNode(i);
@@ -618,44 +637,46 @@ const btnAdd = document.querySelector('#btn-add-sug');
             newOption.setAttribute('value',i);
             select.appendChild(newOption);
         }
-        //if(changeOptin){
-        // select.addEventListener('click',(e)=>{
-        //   e.preventDefault();
-        //     const disable = select.value = 1;
-        //     // console.log(disable)
-        //     disable.disabled = true
-        //   });
-        //}
+        
         select.addEventListener('change',(e)=>{
             e.preventDefault();
-            check2();
-                parentCountEl.innerHTML = '';
-                    for(let j=1; j <= select.value; j++){
+            console.log('here');
+            parentCountEl.innerHTML = '';
+            if(checkbox2.checked){
+                labelNameValue = 'اسم المساهم';
+                labelNationValue = 'جنسيه المساهم';
+                labelrangeValue = 'نسبه المساهم';
+                btnDelete = 'حذف المساهم'
+               
+            } else{
+                labelNameValue = 'اسم المدير';
+                labelNationValue = 'جنسيه المدير';
+                labelrangeValue = 'نسبه المدير';
+                btnDelete = 'حذف المدير'
+
+            }
+            for(let j=1; j <= select.value; j++){
                         const newEl = document.createElement('div');
-                        newEl.classList.add('row','g-3','justify-content-around','pt-3','mangData');
+                        newEl.classList.add('row','g-3','justify-content-between','pt-3','mangData');
                         newEl.setAttribute('dir','rtl');
-                        // newEl.setAttribute('data-id','item_'+j);
                         newEl.innerHTML = `<div class="col-md-3">
-                        <label for="inputtext1" class="form-label" style="display: none;">اسم المساهم</label>  <!--لو شركة مساهمة display=inline-block-->
-                        <label for="inputtext1" class="form-label mang" id="mangName">اسم المدير</label>
+                        <label for="inputtext1" class="form-label mangPart" id="mangName">${labelNameValue}</label>
                         <input type="text" class="form-control lay3 mangInfo" id="name" name="shareholder_name[]">
                       </div>
                       <div class="col-md-3">
-                          <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
-                        <label for="inputtext1" class="form-label mang">جنسيه المدير</label>
-                          <input type="text" class="form-control lay3 mangInfo" id="nation" name="shareholder_nationality[]">
+                        <label for="inputtext1" class="form-label mangPart">${labelNationValue}</label>
+                        <input type="text" class="form-control lay3 mangInfo" id="nation" name="shareholder_nationality[]">
                       </div>
                       <div class="col-md-3">
-                          <label for="inputtext6" class="form-label" style="display: none;">نسبه المساهمه</label>
-                        <label for="inputtext1" class="form-label mang">نسبه المدير</label>
-                          <input type="text" class="form-control lay3 inputtext6"  name="shareholder_percentage[]"  placeholder="%">
+                        <label for="inputtext1" class="form-label mangPart">${labelrangeValue}</label>
+                          <input type="text" class="form-control lay3 inputtext6" name="shareholder_percentage[]"  placeholder="%">
                       </div>
-                          <div class="col-md-5 mb-3">
+                          <div class="col-md-6 mb-3">
                               <label for="formFileMultiple" class="form-label">اضافه البطاقه الشخصية</label>
                               <input class="form-control lay3 mangInfo" name="personal_id[]" type="file" id="id" accept="image/png, image/gif, image/jpeg">
                             </div>
-                          <div class="col-md-3 x-last align-self-center">
-                          <button class="btn btn-outline-danger" type="reset" id="partCompDel" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)">حذف المدير</button>
+                          <div class="col-md-3 x-last align-self-center d-flex justify-content-end">
+                          <button class="btn btn-outline-danger" type="reset" id="partCompDel" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)">${btnDelete}</button>
                           </div>
                           <hr>`;
                             parentCountEl.appendChild(newEl);
@@ -668,16 +689,13 @@ const btnAdd = document.querySelector('#btn-add-sug');
                             })   
                         }
                 });
-        // const deleted = ()=>{
-        //     // parentCountEl.removeChild(parentCountEl.getElementsByClassName('row'))
-        //     console.log(this)
-        //}
-        const inputType6 = document.getElementsByClassName("inputtext6");
+
+const inputType6 = document.getElementsByClassName("inputtext6");
 
 ///////////////get participants data from layer--3//////
 const divs = document.getElementsByClassName('mangData');
-const arrayEle = [];
-const arrayNames = [];
+let arrayEle = [];
+let arrayNames = [];
 function getFormData(){
     let i;
     
@@ -739,11 +757,16 @@ const btnAddMang = document.getElementById('btn-add-mang');
 const parentCard = document.getElementById('card-newAdd');
 let x = 0 , i = 0 , z = 0 , y = 0;
 
+let displayٍSelect ;
 btnAddMang.addEventListener('click',(e)=>{
     e.preventDefault();
-    check2();
+    if(checkbox2.checked){
+        displayٍSelect = 'block';
+    }
+    else{
+        displayٍSelect = 'none';
+    }
 if(parentCard.getElementsByTagName('div').length == 0 ){
-
     if(arrayNames.includes(autocompleteinput.value)){
         // console.log('in');
         arrayEle.forEach((e)=>{
@@ -757,7 +780,7 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
                   <img src="images/svgexport-6 (16) 1.svg" alt="" 
                   onclick="this.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode)">
               </div>
-              <div class="mt-3 mb-3 selectMang" dir="rtl"> 
+              <div class="mt-3 mb-3 " dir="rtl" style="display:${displayٍSelect};"> 
                   <label class="visually-hidden" for="specificSizeSelect">Preference</label>
                   <select class="form-select" name = "mangager_type" id="specificSizeSelect">
                       <option selected readonly>برجاء تحديد التصنيف</option>
@@ -828,7 +851,7 @@ if(parentCard.getElementsByTagName('div').length == 0 ){
         <img src="images/svgexport-6 (16) 1.svg" alt="" 
         onclick="this.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode)">
     </div>
-    <div class="mt-3 mb-3 selectMang" dir="rtl"> 
+    <div class="mt-3 mb-3" dir="rtl"  style="display:${displayٍSelect};"> 
         <label class="visually-hidden" for="specificSizeSelect">Preference</label>
         <select class="form-select" name = "mangager_type" id="specificSizeSelect">
             <option selected readonly>برجاء تحديد التصنيف</option>
@@ -913,7 +936,7 @@ else{
         <img src="images/svgexport-6 (16) 1.svg" alt="" 
         onclick="this.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode)">
     </div>
-    <div class="mt-3 mb-3 selectMang" dir="rtl"> 
+    <div class="mt-3 mb-3" dir="rtl" style="display:${displayٍSelect};"> 
         <label class="visually-hidden" for="specificSizeSelect">Preference</label>
         <select class="form-select" name = "mangager_type" id="specificSizeSelect">
             <option selected readonly>برجاء تحديد التصنيف</option>
@@ -1008,7 +1031,7 @@ else{
                   <img src="images/svgexport-6 (16) 1.svg" alt="" 
                   onclick="this.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode)">
               </div>
-              <div class="mt-3 mb-3 selectMang" dir="rtl"> 
+              <div class="mt-3 mb-3" dir="rtl" style="display:${displayٍSelect};"> 
                   <label class="visually-hidden" for="specificSizeSelect">Preference</label>
                   <select class="form-select" name = "mangager_type" id="specificSizeSelect">
                       <option selected readonly>برجاء تحديد التصنيف</option>
@@ -1079,7 +1102,7 @@ else{
         <img src="images/svgexport-6 (16) 1.svg" alt="" 
         onclick="this.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode)">
     </div>
-    <div class="mt-3 mb-3 selectMang" dir="rtl"> 
+    <div class="mt-3 mb-3 " dir="rtl" style="display:${displayٍSelect};"> 
         <label class="visually-hidden" for="specificSizeSelect">Preference</label>
         <select class="form-select" name = "mangager_type" id="specificSizeSelect">
             <option selected readonly>برجاء تحديد التصنيف</option>
@@ -1164,7 +1187,7 @@ else{
         <img src="images/svgexport-6 (16) 1.svg" alt="" 
         onclick="this.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode)">
     </div>
-    <div class="mt-3 mb-3 selectMang" dir="rtl"> 
+    <div class="mt-3 mb-3" dir="rtl" style="display:${displayٍSelect};"> 
         <label class="visually-hidden" for="specificSizeSelect">Preference</label>
         <select class="form-select" name = "mangager_type" id="specificSizeSelect">
             <option selected readonly>برجاء تحديد التصنيف</option>
